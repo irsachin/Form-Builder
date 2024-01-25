@@ -1,0 +1,124 @@
+{{ 'custom.css' |  asset_url |  stylesheet_tag }}
+
+<div class="sy_form_builder" id="sy_form_builder">
+    <form class="inquiry_form" action="#" method="post">
+        <div id="form_headings">  
+            <h1 id="form_heading">{{ block.settings.main_form_heading }}</h1>
+           <h3 id="form_subheading">{{ block.settings.main_form_subheading }}</h3></div>
+         
+           {% if block.settings.show_first_name_field == true %}
+            <div class="block_input">
+                {% assign isFirstNameRequired = block.settings.is_first_name_required %}
+                <label for="firstName">{{ block.settings.form_first_name }}:</label>
+                <input type="text" id="firstName" name="firstName" {% if isFirstNameRequired %}required{% endif %}>
+            </div>
+        {% endif %}
+    
+        {% if block.settings.show_last_name_field == true %}
+          <div class="block_input">
+              {% assign isLastNameRequired = block.settings.is_last_name_required %}
+              <label for="lastName">{{ block.settings.form_last_name }}:</label>
+              <input type="text" id="lasttName" name="lastName" {% if isLastNameRequired %}required{% endif %}>
+          </div>
+      {% endif %}
+
+      {% if block.settings.show_email_field == true %}
+       <div class="block_input"> 
+        {% assign isEmailRequired = block.settings.is_email_required %}
+        <label for="email">{{ block.settings.form_email }}:</label>
+      <input type="email" id="email" name="email" {% if isEmailRequired  %}required {% endif %}></div>
+      {% endif %}
+
+       <div class="block_input"> 
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required></div>
+
+        <div class="block_input"><label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="city" name="city" placeholder="City" required>
+        <div class="block_input"> 
+        <input type="text" id="state" name="state" placeholder="State" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required></div>
+
+       <div class="block_input"> 
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required>
+    </div>
+
+      <div class="block_input">  <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea></div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% schema %}
+{
+  "name": " Sachin Form Builder",
+  "target": "section",
+  "settings": [
+    { "type": "text", "id": "main_form_heading", "label": "Heading" },
+
+    { "type": "text", "id": "main_form_subheading", "label": "Sub Heading" },
+
+    // first name field 
+    {
+      "type": "checkbox",
+      "label": "Show First Name Field",
+      "id": "show_first_name_field",
+      "default": true
+    },
+
+    { "type":"text","id":"form_first_name","label":"First Name Label","default": "First Name"},
+    
+    {
+      "type": "checkbox",
+      "label": "Is First Name Required?",
+      "id": "is_first_name_required",
+      "default": true
+    },
+// last name field 
+
+    {
+      "type": "checkbox",
+      "label": "Show Last Name Field",
+      "id": "show_last_name_field",
+      "default": true
+    },
+
+    { "type":"text","id":"form_last_name","label":"Last Name Label","default": "Last Name"},
+    
+    {
+      "type": "checkbox",
+      "label": "Is Last Name Required?",
+      "id": "is_last_name_required",
+      "default": true
+    },
+
+    // Email field 
+
+    {
+      "type": "checkbox",
+      "label": "Show Email Field",
+      "id": "show_email_field",
+      "default": true
+    },
+
+    { "type":"text","id":"form_email","label":"Email Label","default": "Email"},
+    
+    {
+      "type": "checkbox",
+      "label": "Is Email Required?",
+      "id": "is_email_required",
+      "default": true
+    }
+    
+    
+
+    
+  ]
+}
+{% endschema %}

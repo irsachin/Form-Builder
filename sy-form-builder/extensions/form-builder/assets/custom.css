@@ -1,0 +1,23 @@
+
+/* Set a default maximum width and center the content horizontally */
+
+.sy_form_builder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:3rem;
+    margin-bottom:3rem;
+}
+#form_headings{
+    text-align: center;
+
+}
+form.inquiry_form {
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px 0px;
+    padding: 20px;
+    /* padding: 15px; */
+}
+#sy_form_builder input, #sy_form_builder textarea{
+    width: 100%;
+}
